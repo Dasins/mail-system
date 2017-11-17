@@ -21,6 +21,7 @@ public class MailItem
      * containing the given message.
      * @param from The sender of this item.
      * @param to The intended recipient of this item.
+     * @param subject The subject of the message to be sent.
      * @param message The text of the message to be sent.
      */
     public MailItem(String from, String to, String subject, String message)
@@ -54,15 +55,39 @@ public class MailItem
     {
         return message;
     }
-
+    
+    /**
+     *  Devuelve un valor true si en el mensaje aparece una cadena inválida.
+     *  En caso contrario, devuelve false
+     */
+    public boolean comprobarSpam()
+    {
+        boolean esSpam = false;
+        if (getMessage().toLowerCase().indexOf("viagra") > 0)
+        {
+            esSpam = true;
+        }
+        if (getMessage().toLowerCase().indexOf("regalo") > 0)
+        {
+            esSpam = true;
+        }
+        return esSpam;
+    }
     /**
      * Print this mail message to the text terminal.
      */
     public void print()
-    {
-        System.out.println("From: " + from);
-        System.out.println("To: " + to);
-        System.out.println("subject: " + subject);
-        System.out.println("Message: " + message);
+    {   
+        if(comprobarSpam())
+        {
+            System.out.println("Se ha recibido Spam");
+        }
+        else
+        {
+            System.out.println("From: " + from);
+            System.out.println("To: " + to);
+            System.out.println("subject: " + subject);
+            System.out.println("Message: " + message);
+        }
     }
 }
