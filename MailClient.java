@@ -20,6 +20,7 @@ public class MailClient
         this.server = server;
         this.user = user;
     }
+    
 
     /**
      * Return the next mail item (if any) for this user.
@@ -49,10 +50,22 @@ public class MailClient
      * the attached mail server.
      * @param to The intended recipient.
      * @param message The text of the message to be sent.
+     * @param subject The subject of the message to be sent.
      */
     public void sendMailItem(String to, String subject, String message)
     {
         MailItem item = new MailItem(user, to, subject, message);
         server.post(item);
     }
+    
+     /**
+      * Imprime por pantalla el numero de mensajes que tiene el usuario.
+      * en el servidor.
+      */
+     public void howManyMailsIHave()
+     {
+        System.out.println("Tiene" +
+                            server.howManyMailItems(user) + 
+                            "mensajes por leer"); 
+     }
 }
