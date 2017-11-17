@@ -24,5 +24,14 @@ public class testMailSystem
         primerUsuario = new MailClient(grupoDServer,"Agapito");
         segundoUsuario = new MailClient(grupoDServer,"Eutanasia");
     }
+    
+    /**
+     * Este test debe comprobar que nos de el número de mensajes
+     * recibidos correcto para cada usuario y 0 si no hay ningun mensaje.
+     */
+    public void primeraFuncionTest ()
+    {
+        //Escribe tu código aqui.
+    }
 
 }
